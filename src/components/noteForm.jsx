@@ -2,15 +2,38 @@ import React, {Component, useContext, useState} from "react";
 
 class NoteForm extends Component {
 
-    render() {
-        console.log("Note Form rendered ...")
-        const {onPost, onDelete, notes} = this.props;
-        return (
-            <div>
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
 
-            </div>
-        )
-    }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+
+      handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+      }
+
+      render() {
+        return (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Title:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+            </label>
+            <label>
+              Note:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
+        );
+      }
 }
 
 export default NoteForm;

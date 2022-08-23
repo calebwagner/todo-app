@@ -2,6 +2,7 @@ import './App.css';
 import { Component } from 'react';
 import Notes from './components/notes'
 import NavBar from './components/navbar';
+import NoteForm from './components/noteForm';
 
 class App extends Component{
   state = {
@@ -67,6 +68,7 @@ handleDelete = (noteId) => {
         <NavBar
         totalNotes={this.state.notes.filter}
         />
+        <NoteForm />
         <main className='container'>
         <Notes
         notes={this.state.notes}
